@@ -152,21 +152,21 @@ const Page = async ({
   // const post = await getPostData(postSlug, locale);
 
   /* Structured Data for Google */
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: post.title,
-    image: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/post/${postSlug}/opengraph-image.png`,
-    author: post.author.first_name + " " + post.author.last_name,
-    genre: post.category.title,
-    publisher: siteConfig.siteName,
-    url: `${process.env.NEXT_PUBLIC_SITE_URL}/post/${postSlug}`,
-    datePublished: new Date(post.date_created).toISOString(),
-    dateCreated: new Date(post.date_created).toISOString(),
-    dateModified: new Date(post.date_updated).toISOString(),
-    description: post.description,
-    articleBody: post.body,
-  };
+  // const jsonLd = {
+  //   "@context": "https://schema.org",
+  //   "@type": "Article",
+  //   headline: post.title,
+  //   image: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/post/${postSlug}/opengraph-image.png`,
+  //   author: post.author.first_name + " " + post.author.last_name,
+  //   genre: post.category.title,
+  //   publisher: siteConfig.siteName,
+  //   url: `${process.env.NEXT_PUBLIC_SITE_URL}/post/${postSlug}`,
+  //   datePublished: new Date(post.date_created).toISOString(),
+  //   dateCreated: new Date(post.date_created).toISOString(),
+  //   dateModified: new Date(post.date_updated).toISOString(),
+  //   description: post.description,
+  //   articleBody: post.body,
+  // };
 
   // If there is no post found, return 404
   if (!post) {
@@ -178,10 +178,10 @@ const Page = async ({
   return (
     <PaddingContainer>
       {/* Add JSON-LD to your page */}
-      <script
+      {/* <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      /> */}
       {/* Container */}
       <div className="space-y-10">
         {/* Post Hero */}
