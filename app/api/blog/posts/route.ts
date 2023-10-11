@@ -10,8 +10,15 @@ export async function main() {
 }
 
 export const GET = async (req: Request, res: NextResponse) => {
-  console.log("hello");
-  
+  const { searchParams } = new URL(req.url);
+  const cat = searchParams.get("cat");
+  // console.log("catRouter", cat);
+
+  // const query = {
+  //   where: {
+  //     cat,
+  //   },
+  // };
   try {
     await main();
     const posts = await prisma.post.findMany();

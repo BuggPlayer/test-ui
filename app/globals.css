@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @layer utilities {
+
+ 
+  .rich-text h1 {
+    @apply text-3xl font-bold py-2;
+  }
+
   .rich-text h2 {
     @apply mb-3 text-3xl font-semibold text-neutral-900;
   }
@@ -14,4 +20,23 @@
   .rich-text p {
     @apply mb-3 leading-snug text-neutral-700;
   }
+  .rich-text li{
+    @apply m-4 leading-snug text-neutral-700;
+  }
+  .rich-text pre  {
+    @apply text-gray-700 w-full flex flex-wrap bg-gray-100 my-6 p-2;
+  } 
+
+  .rich-text blockquote {
+    @apply my-4 p-4 border-l-4 bg-gray-100 text-gray-500 border-red-300;
+  }
+  /* 
+
+.rich-text  h2 {
+    @apply text-xl font-bold py-2;
+} */
+  /* 
+.rich-text  h3 {
+    @apply text-lg font-bold py-2;
+} */
 }

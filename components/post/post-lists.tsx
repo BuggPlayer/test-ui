@@ -6,7 +6,7 @@ interface PostListProps {
   layout?: "vertical" | "horizontal";
   locale?: string;
 }
-const PostList = ({ posts, layout = "vertical", locale }: PostListProps) => {
+const PostList = ({ posts, layout = "horizontal" }: PostListProps) => {
   return (
     <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-flow-col lg:auto-cols-fr">
       {posts.map((post) => (

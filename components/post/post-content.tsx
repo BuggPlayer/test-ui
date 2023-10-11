@@ -9,7 +9,7 @@ interface PostContentProps {
 const PostContent = async ({
   post,
   isPostPage = false,
-  locale,
+
 }: PostContentProps) => {
   return (
     <div className="space-y-2">
@@ -43,11 +43,11 @@ const PostContent = async ({
             : "@lg:text-3xl text-xl @md:text-2xl font-medium"
         } `}
       >
-        {post.title}
+        {post?.title}
       </h2>
       {/* Description */}
       <p className="text-base @lg:text-lg leading-snug text-neutral-600">
-        {post.description}
+        {/* {post?.desc} */}
       </p>
       {/* Read More */}
       {!isPostPage && (

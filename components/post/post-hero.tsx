@@ -14,7 +14,7 @@ const PostHero = ({ post,  }: PostHeroProps) => {
       <Image
         priority
         className="rounded-md object-cover object-center h-[300px] md:h-[500px] mt-6"
-        src={`${post.image}`}
+        src={`${post.img}`}
         width={1280}
         height={500}
         alt={post.title}

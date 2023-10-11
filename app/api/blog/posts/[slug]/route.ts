@@ -3,13 +3,11 @@ import { main } from "../route";
 import prisma from "@/prisma";
 
 // GET SINGLE POST
-export const GET = async (req: Request,  params :any) => {
-  const { slug } = params;
-
+export const GET = async (req: Request, params: any) => {
   try {
     await main();
     const post = await prisma.post.findFirst({
-      where: { slug },
+      where: { slug: params?.params?.slug },
     });
     if (!post)
       return NextResponse.json({ message: "Not Found" }, { status: 404 });
