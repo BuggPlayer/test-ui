@@ -1,4 +1,5 @@
-import { DUMMY_POSTS } from "@/DUMMY_DATA";
+import { DUMMY_CATEGORIES, DUMMY_POSTS } from "@/DUMMY_DATA";
+import CategoryList from "@/components/categoryList/CategoryList";
 import CTACard from "@/components/elements/cta-card";
 import PaddingContainer from "@/components/layout/padding-container";
 import PostCard from "@/components/post/post-card";
@@ -21,6 +22,8 @@ export default async function Home({
   return (
     <PaddingContainer>
       <main className="space-y-10">
+       
+        <CategoryList data={DUMMY_CATEGORIES} />
         <PostCard post={DUMMY_POSTS[0]} />
         <PostList
           posts={DUMMY_POSTS.filter(
