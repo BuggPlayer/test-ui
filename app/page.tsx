@@ -36,9 +36,7 @@ export default async function Home({ searchParams }: any) {
   const { cat } = searchParams;
   const { posts } = await getAllPosts(cat);
   const { categories } = await getAllCategory();
-  console.log("====================================");
-  console.log(cat);
-  console.log("====================================");
+
   if (!posts) {
     notFound();
   }
@@ -51,20 +49,25 @@ export default async function Home({ searchParams }: any) {
       <main className="space-y-10">
         <CategoryList data={categories} />
         <PostCard post={posts[0]} />
-        <PostList
-          // posts={posts.filter(
-          //   (_post: any, index: any) => index > 0 && index < 3
-          // )}
-          posts={posts}
-        />
+        {posts.length > 1 && (
+          <PostList
+            posts={posts.filter(
+              (_post: any, index: any) => index > 0 && index < 3
+            )}
+          />
+        )}
+
         {/* ---@ts-expect-error Async Server Component */}
         <CTACard />
-        {/* <PostCard reverse post={posts[0]} /> */}
-        {/* <PostList
-          posts={posts.filter(
-            (_post: any, index: any) => index > 3 && index < 6
-          )}
-        /> */}
+        <PostCard reverse post={posts[0]} />
+
+        {posts.length > 3 && (
+          <PostList
+            posts={posts.filter(
+              (_post: any, index: any) => index > 3 && index < 6
+            )}
+          />
+        )}
       </main>
     </PaddingContainer>
   );

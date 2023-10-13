@@ -6,14 +6,13 @@ import { useEffect, useState, useRef } from "react";
 import "react-quill/dist/quill.snow.css";
 import { useRouter } from "next/navigation";
 
-
 import "react-quill/dist/quill.snow.css";
-// import {
-//   getStorage,
-//   ref,
-//   uploadBytesResumable,
-//   getDownloadURL,
-// } from "firebase/storage";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
 import { app } from "@/utils/firebase";
 import dynamic from "next/dynamic";
 
@@ -22,7 +21,7 @@ const ReactQuill = dynamic(() => import("react-quill"), {
 });
 
 const WritePage = () => {
-//   const { status } = useSession();
+  //   const { status } = useSession();
   const router = useRouter();
 
   const [open, setOpen] = useState(false);
@@ -32,48 +31,48 @@ const WritePage = () => {
   const [title, setTitle] = useState("");
   const [catSlug, setCatSlug] = useState("");
 
-//   useEffect(() => {
-//     const storage = getStorage(app);
-//     const upload = () => {
-//       const name = new Date().getTime() + file.name;
-//       const storageRef = ref(storage, name);
+  useEffect(() => {
+    const storage = getStorage(app);
+    const upload = () => {
+      const name = new Date().getTime() + file.name;
+      const storageRef = ref(storage, name);
 
-//       const uploadTask = uploadBytesResumable(storageRef, file);
+      const uploadTask = uploadBytesResumable(storageRef, file);
 
-//       uploadTask.on(
-//         "state_changed",
-//         (snapshot) => {
-//           const progress =
-//             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-//           console.log("Upload is " + progress + "% done");
-//           switch (snapshot.state) {
-//             case "paused":
-//               console.log("Upload is paused");
-//               break;
-//             case "running":
-//               console.log("Upload is running");
-//               break;
-//           }
-//         },
-//         (error) => {},
-//         () => {
-//           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-//             setMedia(downloadURL);
-//           });
-//         }
-//       );
-//     };
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+          }
+        },
+        (error) => {},
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setMedia(downloadURL);
+          });
+        }
+      );
+    };
 
-//     file && upload();
-//   }, [file]);
+    file && upload();
+  }, [file]);
 
   // if (status === "loading") {
   //   return <div className={styles.loading}>Loading...</div>;
   // }
 
-  if (status === "unauthenticated") {
-    router.push("/");
-  }
+  // if (status === "unauthenticated") {
+  //   router.push("/");
+  // }
 
   const slugify = (str) =>
     str
@@ -84,7 +83,7 @@ const WritePage = () => {
       .replace(/^-+|-+$/g, "");
 
   const handleSubmit = async () => {
-    const res = await fetch("/api/posts", {
+    const res = await fetch("/api/blog/posts", {
       method: "POST",
       body: JSON.stringify({
         title,
@@ -94,7 +93,9 @@ const WritePage = () => {
         catSlug: catSlug || "style", //If not selected, choose the general category
       }),
     });
-
+    if (!res.ok) {
+      return <div className={styles.loading}>Loading...</div>;
+    }
     if (res.status === 200) {
       const data = await res.json();
       router.push(`/posts/${data.slug}`);
@@ -144,7 +145,7 @@ const WritePage = () => {
             <input
               type="file"
               id="image"
-            //   onChange={(e) => setFile(e.target.files[0])}
+              onChange={(e: any) => setFile(e.target.files[0])}
               style={{ display: "none" }}
             />
             <button className={styles.addButton}>
