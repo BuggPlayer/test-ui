@@ -1,11 +1,11 @@
 export interface Post {
   id: string;
   title: string;
-  description: string;
+  desc: string;
   category: Category;
   author: Author;
   slug: string;
-  image: string;
+  img: string;
   body: string;
   date_created: string;
   date_updated: string;

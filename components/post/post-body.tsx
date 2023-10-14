@@ -25,7 +25,7 @@ const PostBody = ({ body }: { body: string }) => {
     return parse(body, options);
   };
 
-  return <div className="rich-text">{getParsedHTML(body)}</div>;
-};
+  return <div className="rich-text w-[100%] md:w-[80%] mx-auto">{getParsedHTML(body)}</div>;
+}
 
 export default PostBody;

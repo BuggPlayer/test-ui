@@ -90,14 +90,28 @@ export const DUMMY_POSTS: Post[] = [
 export const DUMMY_CATEGORIES: Category[] = [
   {
     id: "1",
-    title: "Cities",
+    title: "JavaScript",
     slug: "cities",
     description:
       "Travel every city that I've been with me! I'll be sharing hidden gems in every city.",
   },
   {
     id: "2",
-    title: "Experiences",
+    title: "Reactjs",
+    slug: "experiences",
+    description:
+      "Experience the world with me! I'll be sharing my adventures and experiences in every country.",
+  },
+  {
+    id: "2",
+    title: "Nodejs",
+    slug: "experiences",
+    description:
+      "Experience the world with me! I'll be sharing my adventures and experiences in every country.",
+  },
+  {
+    id: "2",
+    title: "Express",
     slug: "experiences",
     description:
       "Experience the world with me! I'll be sharing my adventures and experiences in every country.",
